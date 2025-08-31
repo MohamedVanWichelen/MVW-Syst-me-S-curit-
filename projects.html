@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Projets Web - Terminal Admin</title>
+    <link rel="stylesheet" href="projects.css">
+    <link href="https://fonts.googleapis.com/css2?family=Consolas:wght@400;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- En-tête simple -->
+        <header class="header">
+            <h1 class="title">GESTION DES PROJETS WEB</h1>
+            <div class="user-info">
+                <i class="fas fa-user-shield"></i>
+                <span>Admin Authentifié</span>
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Déconnexion
+                </button>
+            </div>
+        </header>
+
+        <!-- Barre d'actions rapides -->
+        <div class="quick-actions">
+            <button class="add-project-btn" onclick="showAddProjectForm()">
+                <i class="fas fa-plus"></i>
+                Nouveau Projet
+            </button>
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Rechercher un projet..." onkeyup="searchProjects()">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+
+        <!-- Liste des projets -->
+        <main class="projects-list">
+            <div class="projects-grid" id="projects-grid">
+                <!-- Les projets seront générés dynamiquement -->
+            </div>
+        </main>
+
+        <!-- Formulaire d'ajout rapide (masqué par défaut) -->
+        <div class="add-project-overlay" id="add-project-overlay">
+            <div class="add-project-form">
+                <div class="form-header">
+                    <h3>Nouveau Projet Web</h3>
+                    <button class="close-btn" onclick="hideAddProjectForm()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <form id="quick-project-form">
+                    <div class="form-group">
+                        <label for="project-title">Titre du Projet *</label>
+                        <input type="text" id="project-title" name="title" required placeholder="Ex: Portfolio Personnel">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="project-description">Description rapide</label>
+                        <textarea id="project-description" name="description" rows="3" placeholder="Description courte du projet..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="project-category">Catégorie</label>
+                        <select id="project-category" name="category">
+                            <option value="portfolio">Portfolio</option>
+                            <option value="ecommerce">E-commerce</option>
+                            <option value="blog">Blog</option>
+                            <option value="webapp">Application Web</option>
+                            <option value="landing">Landing Page</option>
+                            <option value="other">Autre</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="hideAddProjectForm()">Annuler</button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i>
+                            Créer
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal de confirmation pour suppression -->
+        <div class="confirm-modal" id="confirm-modal">
+            <div class="modal-content">
+                <h3>Confirmer la suppression</h3>
+                <p>Êtes-vous sûr de vouloir supprimer ce projet ?</p>
+                <div class="modal-actions">
+                    <button class="btn btn-secondary" onclick="closeConfirmModal()">Annuler</button>
+                    <button class="btn btn-danger" id="confirm-delete-btn">Supprimer</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast notifications -->
+        <div class="toast-container" id="toast-container"></div>
+    </div>
+
+    <script src="projects.js"></script>
+</body>
+</html>

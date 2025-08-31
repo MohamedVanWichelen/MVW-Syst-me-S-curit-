@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" cerminal Adminiontent="width=device-width, initial-scale=1.0">
+    <title>MVW | Système Sécurité</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Consolas:wght@400;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="terminal-screen">
+        <!-- En-tête du terminal -->
+        <div class="terminal-header">
+            <div class="terminal-title">TERMINAL_ADMIN_v3.2.1</div>
+            <div class="terminal-info">
+                <span class="system-info">SYSTEM: LINUX_UBUNTU_22.04</span>
+                <span class="kernel-info">KERNEL: 5.15.0-91-generic</span>
+                <span class="device-info" id="device-info">--</span>
+                <span class="time-info" id="current-time">--:--:--</span>
+            </div>
+        </div>
+
+        <!-- Zone de sortie du terminal -->
+        <div class="terminal-output" id="terminal-output">
+            <!-- Les messages du système seront affichés ici -->
+        </div>
+
+        <!-- Zone de saisie -->
+        <div class="terminal-input-area">
+            <div class="prompt-line">
+                <span class="prompt-symbol">root@</span>
+                <span class="hostname">secure-server</span>
+                <span class="prompt-separator">:</span>
+                <span class="current-path">/var/admin</span>
+                <span class="prompt-end">#</span>
+                <span class="cursor" id="cursor">█</span>
+            </div>
+            <input type="text" id="command-input" class="command-input" placeholder="" autocomplete="off" autofocus>
+        </div>
+        
+
+
+        <!-- Indicateur de verrouillage -->
+        <div class="lockout-indicator" id="lockout-indicator">
+            <div class="lockout-message">
+                <span class="lockout-icon">🔒</span>
+                <span class="lockout-text">SYSTÈME VERROUILLÉ - Attendez la fin du délai de sécurité</span>
+                <div class="lockout-timer" id="lockout-timer">00:00</div>
+            </div>
+        </div>
+
+        <!-- Overlay de chargement -->
+        <div class="loading-overlay" id="loading-overlay">
+            <div class="loading-content">
+                <div class="loading-spinner"></div>
+                <div class="loading-text">Authentification en cours...</div>
+                <div class="loading-dots">
+                    <span>.</span><span>.</span><span>.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
